@@ -1,0 +1,136 @@
+date/time          : 2023-02-18, 20:10:47, 219ms
+computer name      : DESKTOP-FN0ODRD
+user name          : DEVILINI
+registered owner   : DEVILINI
+operating system   : Windows 10 x64 build 22621
+system language    : English
+system up time     : 1 day 6 hours
+program up time    : 1 hour 5 minutes
+processors         : 16x 12th Gen Intel(R) Core(TM) i9-12900K
+physical memory    : 55941/65328 MB (free/total)
+free disk space    : (C:) 644.13 GB (E:) 1105.56 GB
+display mode       : 1920x1080, 32 bit
+process id         : $30a4
+allocated memory   : 94.05 MB
+largest free block : 1.05 GB
+executable         : heidisql.exe
+exec. date/time    : 2016-10-21 13:41
+version            : 9.4.0.5125
+compiled with      : Delphi XE5
+madExcept version  : 4.0.12
+callstack crc      : $026cd61d, $f4d9f240, $f4d9f240
+exception number   : 8
+exception class    : EAccessViolation
+exception message  : Access violation at address 004084AE in module 'heidisql.exe'. Read of address 00000007.
+
+main thread ($3d1c):
+004084ae heidisql.exe System          196 +0 TObject.Free
+00409846 heidisql.exe System          196 +0 @HandleFinallyInternal
+7728caa0 ntdll.dll                           RtlUnwind
+00408b55 heidisql.exe System          196 +0 @AfterConstruction
+004543c3 heidisql.exe System.SysUtils        Exception.CreateFmt
+77298ba1 ntdll.dll                           KiUserExceptionDispatcher
+00408b55 heidisql.exe System          196 +0 @AfterConstruction
+00408488 heidisql.exe System          196 +0 TObject.Create
+00521b27 heidisql.exe System.Classes         TList.Add
+005c1755 heidisql.exe Vcl.Controls           TCustomTouchManager.Create
+005b1fbc heidisql.exe Vcl.Controls           TControl.CreateTouchManager
+005ae3ab heidisql.exe Vcl.Controls           TControl.Create
+005b2b24 heidisql.exe Vcl.Controls           TWinControl.Create
+005bb8d7 heidisql.exe Vcl.Controls           TCustomControl.Create
+005bad5e heidisql.exe Vcl.Controls           THintWindow.Create
+00686d02 heidisql.exe Vcl.Forms              TApplication.SetShowHint
+006834e7 heidisql.exe Vcl.Forms              TScreen.GetMetricSettings
+004097ce heidisql.exe System          196 +0 @HandleFinally
+7728caa0 ntdll.dll                           RtlUnwind
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+00408b55 heidisql.exe System          196 +0 @AfterConstruction
+004543c3 heidisql.exe System.SysUtils        Exception.CreateFmt
+77298ba1 ntdll.dll                           KiUserExceptionDispatcher
+00521b27 heidisql.exe System.Classes         TList.Add
+005b3666 heidisql.exe Vcl.Controls           DoAlign
+005b3c2d heidisql.exe Vcl.Controls           TWinControl.AlignControls
+005b3d73 heidisql.exe Vcl.Controls           TWinControl.AlignControl
+005ae7fc heidisql.exe Vcl.Controls           TControl.RequestAlign
+005b6d23 heidisql.exe Vcl.Controls           TWinControl.RequestAlign
+005b8b0d heidisql.exe Vcl.Controls           TWinControl.AdjustSize
+005b4743 heidisql.exe Vcl.Controls           TWinControl.CreateWnd
+005f93aa heidisql.exe Vcl.ComCtrls           TToolBar.CreateWnd
+77298b5b ntdll.dll                           KiUserCallbackDispatcher
+005b4bb6 heidisql.exe Vcl.Controls           TWinControl.CreateHandle
+005b4e80 heidisql.exe Vcl.Controls           TWinControl.UpdateShowing
+005b5028 heidisql.exe Vcl.Controls           TWinControl.UpdateControlState
+005b4dbf heidisql.exe Vcl.Controls           TWinControl.CMRecreateWnd
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b5b2d heidisql.exe Vcl.Controls           TWinControl.WndProc
+0062439d heidisql.exe Vcl.ExtCtrls           TEditButton.TGlyph.WndProc
+005b4319 heidisql.exe Vcl.Controls           TWinControl.Broadcast
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b0c48 heidisql.exe Vcl.Controls           TControl.Perform
+005b4d7a heidisql.exe Vcl.Controls           TWinControl.RecreateWnd
+005fbe24 heidisql.exe Vcl.ComCtrls           TToolBar.CMSysFontChanged
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b4319 heidisql.exe Vcl.Controls           TWinControl.Broadcast
+005b7ebf heidisql.exe Vcl.Controls           TWinControl.CMSysFontChanged
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b5b2d heidisql.exe Vcl.Controls           TWinControl.WndProc
+005fcc68 heidisql.exe Vcl.ComCtrls           TToolBar.WndProc
+005b4319 heidisql.exe Vcl.Controls           TWinControl.Broadcast
+005b7ebf heidisql.exe Vcl.Controls           TWinControl.CMSysFontChanged
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b5b2d heidisql.exe Vcl.Controls           TWinControl.WndProc
+005b4319 heidisql.exe Vcl.Controls           TWinControl.Broadcast
+005b7ebf heidisql.exe Vcl.Controls           TWinControl.CMSysFontChanged
+00600c8d heidisql.exe Vcl.ComCtrls           TCoolBar.CMSysFontChanged
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b0c48 heidisql.exe Vcl.Controls           TControl.Perform
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b5b2d heidisql.exe Vcl.Controls           TWinControl.WndProc
+00600b30 heidisql.exe Vcl.ComCtrls           TCoolBar.WndProc
+005b4319 heidisql.exe Vcl.Controls           TWinControl.Broadcast
+005b7ebf heidisql.exe Vcl.Controls           TWinControl.CMSysFontChanged
+005b100d heidisql.exe Vcl.Controls           TControl.WndProc
+005b5b2d heidisql.exe Vcl.Controls           TWinControl.WndProc
+0067ca99 heidisql.exe Vcl.Forms              TCustomForm.WndProc
+005b0c48 heidisql.exe Vcl.Controls           TControl.Perform
+00687026 heidisql.exe Vcl.Forms              TApplication.NotifyForms
+00683163 heidisql.exe Vcl.Forms              TScreen.IconFontChanged
+0058664b heidisql.exe Vcl.Graphics           TGraphicsObject.Changed
+00586b55 heidisql.exe Vcl.Graphics           TFont.Changed
+005863d4 heidisql.exe Vcl.Graphics           TResourceManager.ChangeResource
+00586c82 heidisql.exe Vcl.Graphics           TFont.SetData
+00586f35 heidisql.exe Vcl.Graphics           TFont.SetHandle
+006833a8 heidisql.exe Vcl.Forms              TScreen.GetMetricSettings
+00684f00 heidisql.exe Vcl.Forms              TApplication.CheckIniChange
+006850c2 heidisql.exe Vcl.Forms              TApplication.WndProc
+0053c65c heidisql.exe System.Classes         StdWndProc
+77298b5b ntdll.dll                           KiUserCallbackDispatcher
+76227d67 KERNEL32.DLL                        BaseThreadInitThunk
+
+main thread ($3d1c), inner exception level 1:
+>> EAccessViolation, Access violation at address 00521D44 in module 'heidisql.exe'. Write of address 00000007
+00521d45 heidisql.exe System.Classes TList.Grow
+005b4319 heidisql.exe Vcl.Controls   TWinControl.Broadcast
+005b7ebf heidisql.exe Vcl.Controls   TWinControl.CMSysFontChanged
+005b100d heidisql.exe Vcl.Controls   TControl.WndProc
+005b5b2d heidisql.exe Vcl.Controls   TWinControl.WndProc
+0067ca99 heidisql.exe Vcl.Forms      TCustomForm.WndProc
+005b0c48 heidisql.exe Vcl.Controls   TControl.Perform
+00687026 heidisql.exe Vcl.Forms      TApplication.NotifyForms
+00683163 heidisql.exe Vcl.Forms      TScreen.IconFontChanged
+0058664b heidisql.exe Vcl.Graphics   TGraphicsObject.Changed
+00586b55 heidisql.exe Vcl.Graphics   TFont.Changed
+005863d4 heidisql.exe Vcl.Graphics   TResourceManager.ChangeResource
+00586c82 heidisql.exe Vcl.Graphics   TFont.SetData
+00586f35 heidisql.exe Vcl.Graphics   TFont.SetHandle
+006833a8 heidisql.exe Vcl.Forms      TScreen.GetMetricSettings
+00684f00 heidisql.exe Vcl.Forms      TApplication.CheckIniChange
+006850c2 heidisql.exe Vcl.Forms      TApplication.WndProc
+0053c65c heidisql.exe System.Classes StdWndProc
+77298b5b ntdll.dll                   KiUserCallbackDispatcher
+76f3ba84 USER32.dll                  PeekMessageW
+00686088 heidisql.exe Vcl.Forms      TApplication.ProcessMessage
+006861aa heidisql.exe Vcl.Forms      TApplication.HandleMessage
+006864e5 heidisql.exe Vcl.Forms      TApplication.Run
+76227d67 KERNEL32.DLL                BaseThreadInitThunk
+

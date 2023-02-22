@@ -1,0 +1,47 @@
+.box1
+			{
+				color:white;
+				background-color:#4ABDAC;
+				border:1px solid #4ABDAC;
+				font-size:15px;				
+			}
+			.box1 a
+			{
+				color:#4ABDAC;
+			}
+			
+			.box2
+			{
+				color:white;
+				background-color:#F7882F;
+				border:1px solid #F7882F;
+				font-size:15px;				
+			}
+			.box2 a
+			{
+				color:#F7882F;
+			}
+			
+			.box3
+			{
+				color:white;
+				background-color:#6C648B;
+				border:1px solid #6C648B;
+				font-size:15px;				
+			}
+			.box3 a
+			{
+				color:#6C648B;
+			}
+			
+			.box4
+			{
+				color:white;
+				background-color:#CF6766;
+				border:1px solid #CF6766;
+				font-size:15px;				
+			}
+			.box4 a
+			{
+				color:#CF6766;
+			}
