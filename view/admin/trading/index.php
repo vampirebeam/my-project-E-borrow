@@ -31,34 +31,40 @@
                     <h5><i class="fa-sharp fa-solid fa-repeat fa-1x"></i>&nbsp;ยืม - คืนอุปกรณ์</h5>
                 </div>
                 <div class="card-body">
+                    <?php if (isset($_SESSION['success'])) { ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php 
+                                echo $_SESSION['success']; 
+                                unset($_SESSION['success']);
+                            ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (isset($_SESSION['error'])) { ?>
+                        <div class="alert alert-danger">
+                            <?php 
+                                echo $_SESSION['error']; 
+                                unset($_SESSION['error']);
+                            ?>
+                        </div>
+                        <?php } ?>
                     <div class="row mt-3">
                         <div class="col-sm-6">
                             <div class="card">
                                 <button type="button" class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center" data-bs-toggle="modal" data-bs-target="#exampleAdd">
-                                    <i class="fa-sharp fa-solid fa-cart-plus fa-4x">
+                                        <i class="fa-sharp fa-solid fa-cart-plus fa-4x">
                                             <h5 class="card-title">&nbsp;ยืมอุปกรณ์</h5>
                                         </i></a>
                                 </button>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-4">
-                            <div class="card">
-                                <button type="button"
-                                    class="card-body list-group-item list-group-item-action list-group-item-danger p-3 text-center">
-                                    <a href="#"><i class="fa-sharp fa-solid fa-repeat fa-4x">
-                                            <h5 class="card-title">&nbsp;คืนอุปกรณ์</h5>
-                                        </i></a>
-                                </button>
-                            </div>
-                        </div> -->
                         <div class="col-sm-6">
                             <div class="card">
-                                <button type="button"
-                                    class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center">
-                                    <a href="#"><i class="fa-solid fa-clock-rotate-left fa-4x">
+                                <a type="button" class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center" href="history/index">
+                                        <i class="fa-solid fa-clock-rotate-left fa-4x">
                                             <h5 class="card-title">&nbsp;ประวัติ</h5>
-                                        </i></a>
-                                </button>
+                                        </i>
+                                </a>
                             </div>
                         </div>
                         
@@ -73,8 +79,6 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-3">
-
-                       
                                 <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr class="btn-primary">
@@ -118,7 +122,7 @@
     </div>
 </body>
 <!-- modal exampleAdd -->
-<form method="POST" action="#" enctype="multipart/form-data">
+<form method="POST" action="controller/addshop" enctype="multipart/form-data">
     <div class="modal fade" id="exampleAdd" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -132,7 +136,7 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">วันที่ยืม</span>
                             <input name="f_time" id="f_time" type="date" class="form-control" placeholder="วันที่ยืม"
-                                aria-label="f_time" aria-describedby="basic-addon1" 
+                                aria-label="f_time" aria-describedby="basic-addon1" min="<?php echo date('Y-m-d');?>"
                                 required>
                         </div>
                         <div class="input-group mb-3">
@@ -163,9 +167,9 @@
                                 aria-label="total" aria-describedby="basic-addon1" min="1" max="<?php echo $value['total']; ?>"
                                 required>
                         </div> 
+                        <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username']; ?>">
+                        <input name="status" type="hidden" required class="form-control" id="status"  value="รออนุมัติการยืม" hidden/>
                         
-                        
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
