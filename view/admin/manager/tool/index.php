@@ -330,6 +330,10 @@
                                                         ?>    
                             </select>
                         </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
+                            <input name="pic" type="file" class="form-control" aria-label="file" aria-describedby="basic-addon1" required>
+                        </div>
 
                 </div>
                 <div class="modal-footer">
