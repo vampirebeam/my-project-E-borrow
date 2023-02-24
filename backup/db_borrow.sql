@@ -17,8 +17,8 @@ USE `borrow`;
 
 -- Dumping structure for table borrow.cd
 CREATE TABLE IF NOT EXISTS `cd` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `cd` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ไอดี',
+  `cd` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'รหัสครุภัณฑ์',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cd` (`cd`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='รหัสครุภัณฑ์';
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `division` (
   `section` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'แผนก',
   PRIMARY KEY (`id`),
   UNIQUE KEY `Unique` (`section`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table borrow.division: 6 rows
 /*!40000 ALTER TABLE `division` DISABLE KEYS */;
