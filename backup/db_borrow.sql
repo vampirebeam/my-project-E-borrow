@@ -66,20 +66,21 @@ CREATE TABLE IF NOT EXISTS `history` (
 
 -- Dumping structure for table borrow.shop
 CREATE TABLE IF NOT EXISTS `shop` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `total` int(50) NOT NULL DEFAULT '0',
-  `cd` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `serial` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ไอดี',
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT 'ชื่อสินค้า',
+  `total` int(50) NOT NULL DEFAULT '0' COMMENT 'ผลรวมสินค้า',
+  `cd` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT 'ประเภทคุรุภัณฑ์',
+  `serial` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT 'ซีเรียล',
+  `pic` text COLLATE utf8_unicode_ci COMMENT 'รูปภาพ',
   PRIMARY KEY (`id`),
   KEY `cd` (`cd`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='อุปกรณ์';
 
 -- Dumping data for table borrow.shop: 2 rows
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-REPLACE INTO `shop` (`id`, `name`, `total`, `cd`, `serial`) VALUES
-	(1, 'จอภาพแม่ข่าย', 10, 'ทก', '410NDVWGT295'),
-	(2, 'test', 10, 'test', 'ABCDEF');
+REPLACE INTO `shop` (`id`, `name`, `total`, `cd`, `serial`, `pic`) VALUES
+	(1, 'จอภาพแม่ข่าย', 10, 'ทก', '410NDVWGT295', NULL),
+	(2, 'test', 10, 'test', 'ABCDEF', NULL);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 
 -- Dumping structure for table borrow.users
