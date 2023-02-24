@@ -427,6 +427,9 @@
                                                         ?>    
                             </select>
                         </div>
+                        <div class="input-group mb-3">
+                            <input name="pic" type="file" class="form-control" aria-label="file" aria-describedby="basic-addon1" required>
+                        </div>
 
                 </div>
                 <div class="modal-footer">
