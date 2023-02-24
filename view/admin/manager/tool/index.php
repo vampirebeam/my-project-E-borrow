@@ -43,7 +43,7 @@
                 <div class="card-body p-1">
                     <?php if (isset($_SESSION['success'])) { ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         <?php 
                             echo $_SESSION['success']; 
                             unset($_SESSION['success']);
@@ -78,157 +78,163 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="card">
-                                <button type="button" class="card-body list-group-item list-group-item-action list-group-item-success p-3 text-center" data-bs-toggle="modal" data-bs-target="#exampleAddCd">
+                                <button type="button"
+                                    class="card-body list-group-item list-group-item-action list-group-item-success p-3 text-center"
+                                    data-bs-toggle="modal" data-bs-target="#exampleAddCd">
                                     <i class="fa-solid fa-square-plus fa-4x">
-                                            <h5 class="card-title mt-2">&nbsp;เพิ่มครุภัณฑ์</h5>
-                                        </i></a>
+                                        <h5 class="card-title mt-2">&nbsp;เพิ่มครุภัณฑ์</h5>
+                                    </i></a>
                                 </button>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="card">
-                                <button type="button" class="card-body list-group-item list-group-item-action list-group-item-success p-3 text-center" data-bs-toggle="modal" data-bs-target="#exampleAddShop">
+                                <button type="button"
+                                    class="card-body list-group-item list-group-item-action list-group-item-success p-3 text-center"
+                                    data-bs-toggle="modal" data-bs-target="#exampleAddShop">
                                     <i class="fa-solid fa-cart-plus fa-4x">
-                                            <h5 class="card-title mt-2">&nbsp;เพิ่มอุปกรณ์</h5>
-                                        </i></a>
+                                        <h5 class="card-title mt-2">&nbsp;เพิ่มอุปกรณ์</h5>
+                                    </i></a>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <section> 
-                        <form class="row mt-3">
-                            <div class="card-header ">
-                                    <h5><i class="fa-solid fa-wand-magic-sparkles fa-1x"></i>&nbsp;ครุภัณฑ์</h5>
-                                <table id="myTable" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr class="btn-primary">
-                                            <th>ลำดับ</th>
-                                            <th>รหัสครุภัณฑ์</th>
-                                            <th>แก้ไข/ลบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
+                    <div class="card-body">
+                        <div class="row mt-3">
+                            <h5><i class="fa-solid fa-wand-magic-sparkles fa-1x"></i>&nbsp;ครุภัณฑ์</h5>
+                            <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr class="btn-primary">
+                                        <th>ลำดับ</th>
+                                        <th>รหัสครุภัณฑ์</th>
+                                        <th>แก้ไข/ลบ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                                             $sql = "SELECT * FROM   cd";
                                             $array = mysqli_query($con,$sql);
                                             $i= 1;
                                             foreach($array as $value){
                                         ?>
-                                        <tr align="center">
-                                            <td width="10%"><?php echo $i ?></td>
-                                            <td width="50%"><?php echo $value['cd']; ?></td>
-                                            <td width="20%">
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleEditCd<?php echo $value['id']; ?>">
-                                                    <i class="fa-regular fa-pen-to-square"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleDalCd<?php echo $value['id']; ?>">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <?php
+                                    <tr align="center">
+                                        <td width="10%"><?php echo $i ?></td>
+                                        <td width="50%"><?php echo $value['cd']; ?></td>
+                                        <td width="20%">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#exampleEditCd<?php echo $value['id']; ?>">
+                                                <i class="fa-regular fa-pen-to-square"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#exampleDalCd<?php echo $value['id']; ?>">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php
                                             $i++;
                                             }   
                                         ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                    </section>
-                    
-                    <section> 
-                        <form class="row mt-3">
-                            <div class="card-header ">
-                                    <h5><i class="fa-solid fa-wand-magic-sparkles fa-1x"></i>&nbsp;อุปกรณ์</h5>
-                                <table id="myTable1" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr class="btn-primary">
-                                            <th>ลำดับ</th>
-                                            <th>ชื่ออุปกรณ์</th>
-                                            <th>รหัสครุภัณฑ์</th>
-                                            <th>Serlal Number</th>
-                                            <th>จำนวน</th>
-                                            <th>รูปภาพ/แก้ไข/ลบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row mt-3">
+                        <h5><i class="fa-solid fa-wand-magic-sparkles fa-1x"></i>&nbsp;อุปกรณ์</h5>
+                        <table id="myTable1" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr class="btn-primary">
+                                    <th>ลำดับ</th>
+                                    <th>ชื่ออุปกรณ์</th>
+                                    <th>รหัสครุภัณฑ์</th>
+                                    <th>Serlal Number</th>
+                                    <th>จำนวน</th>
+                                    <th>รูปภาพ/แก้ไข/ลบ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                             $sql = "SELECT * FROM   shop";
                                             $array = mysqli_query($con,$sql);
                                             $i= 1;
                                             foreach($array as $value){
                                         ?>
-                                        <tr align="center">
-                                            <td width="10%"><?php echo $i ?></td>
-                                            <td width="20%"><?php echo $value['name']; ?></td>
-                                            <td width="20%"><?php echo $value['cd']; ?></td>
-                                            <td width="20%"><?php echo $value['serial']; ?></td>
-                                            <td width="10%"><?php echo $value['total']; ?></td>
-                                            <td width="20%">
-                                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleEditShop<?php echo $value['id']; ?>">
-                                                    <i class="fa-regular fa-pen-to-square"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleDalShop<?php echo $value['id']; ?>">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                            </td>
+                                <tr align="center">
+                                    <td width="10%"><?php echo $i ?></td>
+                                    <td width="20%"><?php echo $value['name']; ?></td>
+                                    <td width="20%"><?php echo $value['cd']; ?></td>
+                                    <td width="20%"><?php echo $value['serial']; ?></td>
+                                    <td width="10%"><?php echo $value['total']; ?></td>
+                                    <td width="20%">
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleEditShop<?php echo $value['id']; ?>">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleDalShop<?php echo $value['id']; ?>">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
 
 
-                                        </tr>
-                                        <?php
+                                </tr>
+                                <?php
                                             $i++;
                                             }   
                                         ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                    </section>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 </body>
 
 <!-- modal exampleAddCD -->
 <form method="POST" action="controller/addnub" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleAddCd" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleAddCd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        <i class="fa fa-square-plus"></i>&nbsp;เพิ่มครุภัณฑ์</h5>
+                        <i class="fa fa-square-plus"></i>&nbsp;เพิ่มครุภัณฑ์
+                    </h5>
                 </div>
                 <div class="modal-body">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-square-plus"></i></span>
-                            <input name="cd" id="cd" type="text" class="form-control" placeholder="ชื่อครุภัณฑ์"
-                                aria-label="cd" aria-describedby="basic-addon1" 
-                                required>
-                        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa fa-square-plus"></i></span>
+                        <input name="cd" id="cd" type="text" class="form-control" placeholder="ชื่อครุภัณฑ์"
+                            aria-label="cd" aria-describedby="basic-addon1" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-success" data-bs-dismiss="modal">เพิ่มครุภัณฑ์</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
 </form>
 <!-- end modal exampleAddCD -->
 <!-- modal exampleEditCd -->
-                <?php
+<?php
                     $sql = "SELECT * FROM   cd";
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
 <form method="POST" action="controller/editcd?valuenum=<?php echo $value['id']; ?>" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleEditCd<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleEditCd<?php echo $value['id']; ?>" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
@@ -237,23 +243,24 @@
 
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">แผนก</span>
-                                <input name="cd" id="cd" type="text" class="form-control" placeholder="ชื่อครุภัณฑ์"
-                                aria-label="cd" aria-describedby="basic-addon1" value="<?php echo $value['cd']; ?>" required>     
-                        </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">แผนก</span>
+                        <input name="cd" id="cd" type="text" class="form-control" placeholder="ชื่อครุภัณฑ์"
+                            aria-label="cd" aria-describedby="basic-addon1" value="<?php echo $value['cd']; ?>"
+                            required>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">อัพเดตข้อมูล</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
 </form>
-                <?php   }   ?>
+<?php   }   ?>
 <!-- end  modal exampleEditCd -->
 <!-- modal exampleDalCd -->
 <?php
@@ -261,25 +268,26 @@
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
-    <div class="modal fade" id="exampleDalCd<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-light">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-trash fa-1x"></i>&nbsp;ลบข้อมูล
-                    </h5>
+<div class="modal fade" id="exampleDalCd<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-light">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-trash fa-1x"></i>&nbsp;ลบข้อมูล
+                </h5>
 
-                </div>
-                <div class="modal-body">
-                    ต้องการลบข้อมูล <?php echo $value['cd']; ?> ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                    <a href="controller/delcd?valuenum=<?php echo $value['id']; ?>" type="button"
-                        class="btn btn-danger">ลบข้อมูล</a>
-                </div>
+            </div>
+            <div class="modal-body">
+                ต้องการลบข้อมูล <?php echo $value['cd']; ?> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                <a href="controller/delcd?valuenum=<?php echo $value['id']; ?>" type="button"
+                    class="btn btn-danger">ลบข้อมูล</a>
             </div>
         </div>
     </div>
+</div>
 <?php                      
                     }   
                 ?>
@@ -287,58 +295,56 @@
 
 <!-- modal exampleAddShop -->
 <form method="POST" action="controller/addshop" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleAddShop" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleAddShop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        <i class="fa-solid fa-cart-plus"></i>&nbsp;เพิ่มอุปกรณ์</h5>
+                        <i class="fa-solid fa-cart-plus"></i>&nbsp;เพิ่มอุปกรณ์
+                    </h5>
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
-                            <input name="name" id="name" type="text" class="form-control" placeholder="ชื่ออุปกรณ์"
-                                aria-label="name" aria-describedby="basic-addon1" 
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                            <input name="serial" type="text" class="form-control" placeholder="โปรดใส่ Serial ให้ถูกต้อง"
-                                aria-label="tel" aria-describedby="basic-addon1" 
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
-                            <input name="total" type="text" class="form-control" placeholder="โปรดใส่จำนวน"
-                                aria-label="tel" aria-describedby="basic-addon1" 
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">ครุภัณฑ์</span>
-                            <select name="cd" class="form-select" id="inputGroupSelect01" required>
-                                <option selected>โปรดเลือกรหัสครุภัณฑ์...</option>
-                                <?php
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
+                        <input name="name" id="name" type="text" class="form-control" placeholder="ชื่ออุปกรณ์"
+                            aria-label="name" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                        <input name="serial" type="text" class="form-control" placeholder="โปรดใส่ Serial ให้ถูกต้อง"
+                            aria-label="tel" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
+                        <input name="total" type="text" class="form-control" placeholder="โปรดใส่จำนวน" aria-label="tel"
+                            aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">ครุภัณฑ์</span>
+                        <select name="cd" class="form-select" id="inputGroupSelect01" required>
+                            <option selected>โปรดเลือกรหัสครุภัณฑ์...</option>
+                            <?php
                                                         $sql = "SELECT * FROM cd";
                                                         $array = mysqli_query($con,$sql);
                                                         foreach($array as $section){
                                                     ?>
-                                                    <option value="<?php echo $section['cd']; ?>"><?php echo $section['cd']; ?></option>
-                                                        <?php
+                            <option value="<?php echo $section['cd']; ?>"><?php echo $section['cd']; ?></option>
+                            <?php
                                                             }
-                                                        ?>    
-                            </select>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input name="pic" type="file" class="form-control" aria-label="file" aria-describedby="basic-addon1" required>
-                        </div>
+                                                        ?>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input name="pic" type="file" class="form-control" aria-label="file"
+                            aria-describedby="basic-addon1" required>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-success" data-bs-dismiss="modal">เพิ่มอุปกรณ์</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
@@ -350,9 +356,9 @@
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
-<form method="POST"  enctype="multipart/form-data">
-    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+<form method="POST" enctype="multipart/form-data">
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
@@ -361,20 +367,21 @@
 
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="input-group mb-3">
-                            <img src="public/<?php echo $value['pic']; ?>" class="img-thumbnail" alt="<?php echo $value['name']; ?>">
-                                   
-                        </div>
+
+                    <div class="input-group mb-3">
+                        <img src="public/<?php echo $value['pic']; ?>" class="img-thumbnail"
+                            alt="<?php echo $value['name']; ?>">
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
 </form>
-                <?php   }   ?>
+<?php   }   ?>
 <!-- end modal exampleShowShop -->
 <!-- modal exampleEditShop -->
 <?php
@@ -383,8 +390,8 @@
                     foreach($array as $value){
                 ?>
 <form method="POST" action="controller/editshop?valuenum=<?php echo $value['id']; ?>" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleEditShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleEditShop<?php echo $value['id']; ?>" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
@@ -393,54 +400,54 @@
 
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
-                            <input name="name" id="name" type="text" class="form-control" placeholder="ชื่ออุปกรณ์"
-                                aria-label="name" aria-describedby="basic-addon1" value="<?php echo $value['name']; ?>"
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                            <input name="serial" type="text" class="form-control" placeholder="โปรดใส่ Serial ให้ถูกต้อง"
-                                aria-label="tel" aria-describedby="basic-addon1" value="<?php echo $value['serial']; ?>"
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
-                            <input name="total" type="text" class="form-control" placeholder="โปรดใส่จำนวน"
-                                aria-label="tel" aria-describedby="basic-addon1" value="<?php echo $value['total']; ?>"
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">ครุภัณฑ์</span>
-                            <select name="cd" class="form-select" id="inputGroupSelect01" required>
-                                <option selected><?php echo $value['cd']; ?></option>
-                                <?php
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
+                        <input name="name" id="name" type="text" class="form-control" placeholder="ชื่ออุปกรณ์"
+                            aria-label="name" aria-describedby="basic-addon1" value="<?php echo $value['name']; ?>"
+                            required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                        <input name="serial" type="text" class="form-control" placeholder="โปรดใส่ Serial ให้ถูกต้อง"
+                            aria-label="tel" aria-describedby="basic-addon1" value="<?php echo $value['serial']; ?>"
+                            required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
+                        <input name="total" type="text" class="form-control" placeholder="โปรดใส่จำนวน" aria-label="tel"
+                            aria-describedby="basic-addon1" value="<?php echo $value['total']; ?>" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">ครุภัณฑ์</span>
+                        <select name="cd" class="form-select" id="inputGroupSelect01" required>
+                            <option selected><?php echo $value['cd']; ?></option>
+                            <?php
                                                         $sql = "SELECT * FROM cd";
                                                         $array = mysqli_query($con,$sql);
                                                         foreach($array as $section){
                                                     ?>
-                                                    <option value="<?php echo $section['cd']; ?>"><?php echo $section['cd']; ?></option>
-                                                        <?php
+                            <option value="<?php echo $section['cd']; ?>"><?php echo $section['cd']; ?></option>
+                            <?php
                                                             }
-                                                        ?>    
-                            </select>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input name="pic" type="file" class="form-control" aria-label="file" aria-describedby="basic-addon1" required>
-                        </div>
+                                                        ?>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input name="pic" type="file" class="form-control" aria-label="file"
+                            aria-describedby="basic-addon1" required>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">อัพเดตข้อมูล</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
 </form>
-                <?php   }   ?>
+<?php   }   ?>
 <!-- end  modal exampleEditShop -->
 
 <!-- modal exampleDalShop -->
@@ -449,25 +456,26 @@
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
-    <div class="modal fade" id="exampleDalShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-light">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-trash fa-1x"></i>&nbsp;ลบข้อมูล
-                    </h5>
+<div class="modal fade" id="exampleDalShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-light">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-trash fa-1x"></i>&nbsp;ลบข้อมูล
+                </h5>
 
-                </div>
-                <div class="modal-body">
-                    ต้องการลบข้อมูลอุปกรณ์ <?php echo $value['name']; ?> ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                    <a href="controller/delshop?valuenum=<?php echo $value['id']; ?>" type="button"
-                        class="btn btn-danger">ลบข้อมูล</a>
-                </div>
+            </div>
+            <div class="modal-body">
+                ต้องการลบข้อมูลอุปกรณ์ <?php echo $value['name']; ?> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                <a href="controller/delshop?valuenum=<?php echo $value['id']; ?>" type="button"
+                    class="btn btn-danger">ลบข้อมูล</a>
             </div>
         </div>
     </div>
+</div>
 <?php                      
                     }   
                 ?>
@@ -479,17 +487,17 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
-   <!-- script datatable -->
-   <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myTable1').DataTable();
-        });
-    </script>
-   <!-- end script datatable -->
+<!-- script datatable -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#myTable').DataTable();
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#myTable1').DataTable();
+});
+</script>
+<!-- end script datatable -->
 <script src="../../asset/js/sidebar.js"></script>
 <?php include("../../../asset/js/script.php") ?>

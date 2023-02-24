@@ -59,6 +59,59 @@
                     </div>
                     <?php } ?>
                 </div>
+                <div class="row">
+                        <!-- <div class="col-sm-4">
+                            <div class="card">
+                                <div
+                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
+                                    <?php   
+                                            $i= 1;
+                                            $sql= "SELECT SUM($i) as id FROM history";
+                                            $array = mysqli_query($con,$sql);
+                                            $sum = mysqli_fetch_assoc($array);       
+                                    ?>
+                                    <i class="fa-solid fa-wand-magic-sparkles fa-4x">
+                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่อนุมัติ <?php echo $sum['id']; ?> </h5>
+                                    </i>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div
+                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
+                                    <?php   
+                                            $i= 1;
+                                            $sql= "SELECT SUM($i) as id FROM history";
+                                            $array = mysqli_query($con,$sql);
+                                            $sum = mysqli_fetch_assoc($array);       
+                                    ?>
+                                    <i class="fa-solid fa-wand-magic-sparkles fa-4x">
+                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่รออนุมัติ <?php echo $sum['id']; ?> </h5>
+                                    </i>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div
+                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
+                                    <?php   
+                                            $i= 1;
+                                            $sql= "SELECT SUM($i) SET status='อุปกรณ์ที่ไม่อนุมัติ' WHEN id  FROM history";
+                                            $array = mysqli_query($con,$sql);
+                                            $sum = mysqli_fetch_assoc($array);       
+                                    ?>
+                                    <i class="fa-solid fa-wand-magic-sparkles fa-4x">
+                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่ไม่อนุมัติ <?php echo $sum['id']; ?> </h5>
+                                    </i>
+
+                                </div>
+                            </div>
+                        </div> -->
+                        
                 <div class="card-body">
                     <div class="row mt-3">
                         <table id="myTable" class="table table-striped table-bordered" style="width:100%">
@@ -78,11 +131,9 @@
                                             $sql = "SELECT * FROM   history
                                                     -- WHERE username ='$_SESSION[username]'
                                                     ";
-                                            
                                             $array = mysqli_query($con,$sql);
                                             $i= 1;
-                                            foreach($array as $value){
-                                                
+                                            foreach($array as $value){     
                                          ?>
 
                                 <tr align="center">
