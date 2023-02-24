@@ -32,42 +32,46 @@
                 </div>
                 <div class="card-body">
                     <?php if (isset($_SESSION['success'])) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?php 
+                        <?php 
                                 echo $_SESSION['success']; 
                                 unset($_SESSION['success']);
                             ?>
-                        </div>
-                        <?php } ?>
-                        <?php if (isset($_SESSION['error'])) { ?>
-                        <div class="alert alert-danger">
-                            <?php 
+                    </div>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['error'])) { ?>
+                    <div class="alert alert-danger">
+                        <?php 
                                 echo $_SESSION['error']; 
                                 unset($_SESSION['error']);
                             ?>
-                        </div>
-                        <?php } ?>
+                    </div>
+                    <?php } ?>
                     <div class="row mt-3">
                         <div class="col-sm-6">
                             <div class="card">
-                                <button type="button" class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center" data-bs-toggle="modal" data-bs-target="#exampleAdd">
-                                        <i class="fa-sharp fa-solid fa-cart-plus fa-4x">
-                                            <h5 class="card-title">&nbsp;ยืมอุปกรณ์</h5>
-                                        </i></a>
+                                <button type="button"
+                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center"
+                                    data-bs-toggle="modal" data-bs-target="#exampleAdd">
+                                    <i class="fa-sharp fa-solid fa-cart-plus fa-4x">
+                                        <h5 class="card-title">&nbsp;ยืมอุปกรณ์</h5>
+                                    </i></a>
                                 </button>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="card">
-                                <a type="button" class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center" href="history/index">
-                                        <i class="fa-solid fa-clock-rotate-left fa-4x">
-                                            <h5 class="card-title">&nbsp;ประวัติ</h5>
-                                        </i>
+                                <a type="button"
+                                    class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center"
+                                    href="history/index">
+                                    <i class="fa-solid fa-clock-rotate-left fa-4x">
+                                        <h5 class="card-title">&nbsp;ประวัติ</h5>
+                                    </i>
                                 </a>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -79,42 +83,43 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-3">
-                                <table id="myTable" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr class="btn-primary">
-                                            <th>ลำดับ</th>
-                                            <th>ชื่ออุปกรณ์</th>
-                                            <th>รหัสครุภัณฑ์</th>
-                                            <th>Serlal Number</th>
-                                            <th>จำนวน</th>
-                                            <th>รูปภาพ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr class="btn-primary">
+                                    <th>ลำดับ</th>
+                                    <th>ชื่ออุปกรณ์</th>
+                                    <th>รหัสครุภัณฑ์</th>
+                                    <th>Serlal Number</th>
+                                    <th>จำนวน</th>
+                                    <th>รูปภาพ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                             $sql = "SELECT * FROM   shop";
                                             $array = mysqli_query($con,$sql);
                                             $i= 1;
                                             foreach($array as $value){
                                         ?>
-                                        <tr align="center">
-                                            <td width="10%"><?php echo $i ?></td>
-                                            <td width="20%"><?php echo $value['name']; ?></td>
-                                            <td width="20%"><?php echo $value['cd']; ?></td>
-                                            <td width="20%"><?php echo $value['serial']; ?></td>
-                                            <td width="20%"><?php echo $value['total']; ?></td>
-                                            <td width="10%">
-                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <?php
+                                <tr align="center">
+                                    <td width="10%"><?php echo $i ?></td>
+                                    <td width="20%"><?php echo $value['name']; ?></td>
+                                    <td width="20%"><?php echo $value['cd']; ?></td>
+                                    <td width="20%"><?php echo $value['serial']; ?></td>
+                                    <td width="20%"><?php echo $value['total']; ?></td>
+                                    <td width="10%">
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php
                                             $i++;
                                             }   
                                         ?>
-                                    </tbody>
-                                </table>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -123,58 +128,68 @@
 </body>
 <!-- modal exampleAdd -->
 <form method="POST" action="controller/addshop" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleAdd" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        <i class="fa-solid fa-cart-plus"></i>&nbsp;ยืมอุปกรณ์</h5>
+                        <i class="fa-solid fa-cart-plus"></i>&nbsp;ยืมอุปกรณ์
+                    </h5>
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">วันที่ยืม</span>
-                            <input name="f_time" id="f_time" type="date" class="form-control" placeholder="วันที่ยืม"
-                                aria-label="f_time" aria-describedby="basic-addon1" min="<?php echo date('Y-m-d');?>"
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">วันที่คืน</span>
-                            <input name="l_time" id="l_time" type="date" class="form-control" placeholder="วันที่คืน"
-                                aria-label="l_time" aria-describedby="basic-addon1" min="<?php echo date('Y-m-d');?>"
-                                required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
-                            <select name="name" class="form-select" id="inputGroupSelect01" required>
-                                    <option selected disabled>โปรดเลือกอุปกรณ์ที่ต้องการยืม...</option>
-                                    <?php
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">วันที่ยืม</span>
+                        <input name="f_time" id="f_time" type="date" class="form-control" placeholder="วันที่ยืม"
+                            aria-label="f_time" aria-describedby="basic-addon1" min="<?php echo date('Y-m-d');?>"
+                            required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">วันที่คืน</span>
+                        <input name="l_time" id="l_time" type="date" class="form-control" placeholder="วันที่คืน"
+                            aria-label="l_time" aria-describedby="basic-addon1" min="<?php echo date('Y-m-d', strtotime('+1 day'));?>"
+                            required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
+                        <select name="name" id="name" class="form-select" id="inputGroupSelect01"  required>
+                            <option selected disabled>โปรดเลือกอุปกรณ์ที่ต้องการยืม...</option>
+                            <?php
                                         session_start();
-                                        $sql = "SELECT * FROM shop";
+                                        $sql = "SELECT * FROM shop ";
                                         $array = mysqli_query($con,$sql);
                                         foreach($array as $value){
                                     ?>
-                                        <option value="<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
+                            <option value="<?php echo $value['id_shop']; ?>.<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
                                     <?php
                                         }
                                     ?>
-                                </select>
-                        </div>
-                         <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
+                        </select>
+                    </div>
+                                        <?php 
+                                                $sql = "SELECT * FROM shop ";
+                                                $array = mysqli_query($con,$sql);
+                                                foreach($array as $value){
+                                        ?>
+                     <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
                             <input name="total" id="total" type="number" class="form-control" placeholder="จำนวนที่จะยืม"
-                                aria-label="total" aria-describedby="basic-addon1" min="1" max="<?php echo $value['total']; ?>"
-                                required>
-                        </div> 
-                        <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username']; ?>">
-                        <input name="status" type="hidden" required class="form-control" id="status"  value="รออนุมัติการยืม" hidden/>
-                        
+                            aria-label="total" aria-describedby="basic-addon1" min="1" max="<?php echo $value['total']; ?>"
+                            required>
+                                <?php
+                                        }
+                                    ?>
+                            </input>
+                    </div> 
+                    <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username']; ?>">
+                    <input name="status" type="hidden" required class="form-control" id="status" value="รออนุมัติการยืม"
+                        hidden />
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-success" data-bs-dismiss="modal">ยืมอุปกรณ์</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
@@ -186,9 +201,9 @@
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
-<form method="POST"  enctype="multipart/form-data">
-    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+<form method="POST" enctype="multipart/form-data">
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-light">
@@ -197,30 +212,40 @@
 
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="input-group mb-3">
-                            <img src="../manager/tool/public/<?php echo $value['pic']; ?>" class="img-thumbnail" alt="<?php echo $value['name']; ?>">
-                                   
-                        </div>
+
+                    <div class="input-group mb-3">
+                        <img src="../manager/tool/public/<?php echo $value['pic']; ?>" class="img-thumbnail"
+                            alt="<?php echo $value['name']; ?>">
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                </div>                 
+                </div>
             </div>
         </div>
     </div>
 </form>
-                <?php   }   ?>
+<?php   }   ?>
 <!-- end modal exampleShowShop -->
+                            <!-- <input name="total" id="total" type="number" class="form-control" placeholder="จำนวนที่จะยืม"
+                            aria-label="total" aria-describedby="basic-addon1" min="1" max="<?php echo $total ?>"
+                            required> -->
+
 </html>
 <script src="../asset/js/sidebar.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <!-- script datatable -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
-   <!-- end script datatable -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#myTable').DataTable();
+});
+</script>
+<!-- end script datatable -->
+<!-- script showCustomer -->
+<script type="text/javascript">
+    
+</script>
+<!-- end script total -->
 <?php include("../../asset/js/script.php") ?>

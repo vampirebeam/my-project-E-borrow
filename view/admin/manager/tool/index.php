@@ -171,15 +171,15 @@
                                     <td width="10%"><?php echo $value['total']; ?></td>
                                     <td width="20%">
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
+                                            data-bs-target="#exampleShowShop<?php echo $value['id_shop']; ?>">
                                             <i class="fa-solid fa-eye"></i>
                                         </button>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#exampleEditShop<?php echo $value['id']; ?>">
+                                            data-bs-target="#exampleEditShop<?php echo $value['id_shop']; ?>">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </button>
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#exampleDalShop<?php echo $value['id']; ?>">
+                                            data-bs-target="#exampleDalShop<?php echo $value['id_shop']; ?>">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </td>
@@ -357,7 +357,7 @@
                     foreach($array as $value){
                 ?>
 <form method="POST" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1"
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id_shop']; ?>" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -389,8 +389,8 @@
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
-<form method="POST" action="controller/editshop?valuenum=<?php echo $value['id']; ?>" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleEditShop<?php echo $value['id']; ?>" tabindex="-1"
+<form method="POST" action="controller/editshop?valuenum=<?php echo $value['id_shop']; ?>" enctype="multipart/form-data">
+    <div class="modal fade" id="exampleEditShop<?php echo $value['id_shop']; ?>" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -456,7 +456,7 @@
                     $array = mysqli_query($con,$sql);
                     foreach($array as $value){
                 ?>
-<div class="modal fade" id="exampleDalShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="exampleDalShop<?php echo $value['id_shop']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -470,7 +470,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                <a href="controller/delshop?valuenum=<?php echo $value['id']; ?>" type="button"
+                <a href="controller/delshop?valuenum=<?php echo $value['id_shop']; ?>" type="button"
                     class="btn btn-danger">ลบข้อมูล</a>
             </div>
         </div>

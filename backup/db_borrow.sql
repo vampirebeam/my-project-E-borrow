@@ -58,14 +58,17 @@ CREATE TABLE IF NOT EXISTS `history` (
   `f_time` date DEFAULT NULL COMMENT 'วันเวลาที่ยืม',
   `l_time` date DEFAULT NULL COMMENT 'วันเวลาที่คืน',
   `status` text COLLATE utf8_unicode_ci COMMENT 'สถาณะ',
+  `id_shop` int(11) DEFAULT NULL COMMENT 'ID สินค้า',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการยืมอุปกรณ์';
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการยืมอุปกรณ์';
 
--- Dumping data for table borrow.history: 0 rows
+-- Dumping data for table borrow.history: 4 rows
 /*!40000 ALTER TABLE `history` DISABLE KEYS */;
-REPLACE INTO `history` (`id`, `name`, `username`, `total`, `f_time`, `l_time`, `status`) VALUES
-	(2, 'test', 'admin', 30, '2023-02-24', '2023-02-24', 'รออนุมัติการยืม'),
-	(3, 'test', 'test', 1, '2023-02-24', '2023-02-24', 'รออนุมัติการยืม');
+REPLACE INTO `history` (`id`, `name`, `username`, `total`, `f_time`, `l_time`, `status`, `id_shop`) VALUES
+	(2, 'test', 'admin', 30, '2023-02-24', '2023-02-24', 'รออนุมัติการยืม', NULL),
+	(3, 'test', 'test', 1, '2023-02-24', '2023-02-24', 'รออนุมัติการยืม', NULL),
+	(4, 'จอภาพแม่ข่าย', 'admin', 31, '2023-02-24', '2023-02-25', 'ไม่อนุมัติการยืม', NULL),
+	(5, '2', 'admin', 30, '2023-02-24', '2023-02-25', 'รออนุมัติการยืม', NULL);
 /*!40000 ALTER TABLE `history` ENABLE KEYS */;
 
 -- Dumping structure for table borrow.shop
@@ -76,16 +79,17 @@ CREATE TABLE IF NOT EXISTS `shop` (
   `cd` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT 'ประเภทคุรุภัณฑ์',
   `serial` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT 'ซีเรียล',
   `pic` text COLLATE utf8_unicode_ci COMMENT 'รูปภาพ',
+  `id_shop` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cd` (`cd`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='อุปกรณ์';
 
 -- Dumping data for table borrow.shop: 3 rows
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-REPLACE INTO `shop` (`id`, `name`, `total`, `cd`, `serial`, `pic`) VALUES
-	(1, 'จอภาพแม่ข่าย', 10, 'ทก', '410NDVWGT295', 'fa060ae9187d928dd214ae60d486f8f7.jpg'),
-	(2, 'การ์ตูนผมเหลือง', 10, 'test', 'ABCDEF', 'e795d77eaf95bb9b1aae7b2954d8a908.png'),
-	(3, 'test', 31, 'ทก.', 'ABCDEF', 'fa060ae9187d928dd214ae60d486f8f7.jpg');
+REPLACE INTO `shop` (`id`, `name`, `total`, `cd`, `serial`, `pic`, `id_shop`) VALUES
+	(1, 'จอภาพแม่ข่าย', 10, 'ทก', '410NDVWGT295', 'fa060ae9187d928dd214ae60d486f8f7.jpg', NULL),
+	(2, 'การ์ตูนผมเหลือง', 10, 'test', 'ABCDEF', 'e795d77eaf95bb9b1aae7b2954d8a908.png', NULL),
+	(3, 'test', 31, 'ทก.', 'ABCDEF', 'fa060ae9187d928dd214ae60d486f8f7.jpg', NULL);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 
 -- Dumping structure for table borrow.users
