@@ -19,7 +19,7 @@
                                             <th>ลำดับ</th>
                                             <th>ชื่ออุปกรณ์</th>
                                             <th>จำนวน</th>
-                                            
+                                            <th>รูปภาพ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -33,11 +33,12 @@
                                             <td width="10%"><?php echo $i ?></td>
                                             <td width="20%"><?php echo $value['name']; ?></td>
                                             <td width="20%"><?php echo $value['total']; ?></td>
-                                            <!-- <td width="10%">
-                                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#<?php echo $value['id']; ?>">
+                                            <td width="20%">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
                                                     <i class="fa-solid fa-eye"></i>
-                                                </button> 
-                                            </td> -->
+                                                </button>
+                                            </td>
+                                            
 
 
                                         </tr>
@@ -51,6 +52,7 @@
             </div>
         </div>
     </div>
+    
 
     <div class="col-sm-6">
         <div class="card">
@@ -64,3 +66,36 @@
     </div>
 
 </div>
+
+<!-- modal exampleShowShop -->
+<?php
+                    $sql = "SELECT * FROM   shop";
+                    $array = mysqli_query($con,$sql);
+                    foreach($array as $value){
+                ?>
+
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel"><i
+                            class="fa-regular fa-pen-to-square"></i>&nbsp;รูปภาพ</h5>
+
+                </div>
+                <div class="modal-body">
+                    
+                        <div class="input-group mb-3">
+                            <img src="/view/admin/manager/tool/public/<?php echo $value['pic']; ?>" class="img-thumbnail" alt="<?php echo $value['name']; ?>">
+                                   
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                </div>                 
+            </div>
+        </div>
+    </div>
+
+                <?php   }   ?>
+<!-- end modal exampleShowShop -->

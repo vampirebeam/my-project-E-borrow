@@ -164,8 +164,8 @@
                                             <td width="20%"><?php echo $value['name']; ?></td>
                                             <td width="20%"><?php echo $value['cd']; ?></td>
                                             <td width="20%"><?php echo $value['serial']; ?></td>
-                                            <td width="20%"><?php echo $value['total']; ?></td>
-                                            <td width="10%">
+                                            <td width="10%"><?php echo $value['total']; ?></td>
+                                            <td width="20%">
                                                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </button>
