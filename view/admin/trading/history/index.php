@@ -61,20 +61,20 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-3">
-                                <table id="myTable" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr class="btn-primary">
-                                            <th>ลำดับ</th>
-                                            <th>ชื่ออุปกรณ์</th>
-                                            <th>จำนวนที่ยืม</th>
-                                            <th>วันที่ยืม</th>
-                                            <th>วันที่คืน</th>
-                                            <th>ชื่อผู้ยืม</th>
-                                            <th>สถาณะ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr class="btn-primary">
+                                    <th>ลำดับ</th>
+                                    <th>ชื่ออุปกรณ์</th>
+                                    <th>จำนวนที่ยืม</th>
+                                    <th>วันที่ยืม</th>
+                                    <th>วันที่คืน</th>
+                                    <th>ชื่อผู้ยืม</th>
+                                    <th>สถาณะ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                             $sql = "SELECT * FROM   history
                                                     -- WHERE username ='$_SESSION[username]'
                                                     ";
@@ -84,30 +84,72 @@
                                             foreach($array as $value){
                                                 
                                          ?>
-                                        
-                                            <tr align="center">
-                                                <td width="10%"><?php echo $i ?></td>
-                                                <td width="20%"><?php echo $value['name']; ?></td>
-                                                <td width="10%"><?php echo $value['total']; ?></td>
-                                                <td width="10%"><?php echo $value['f_time']; ?></td>
-                                                <td width="10%"><?php echo $value['l_time']; ?></td>
-                                                <td width="10%"><?php echo $value['username']; ?></td>
-                                                <td width="20%">
-                                                <div class="dropdown show">
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleStatus<?php echo $value['id']; ?>">
-                                                    <i class="fa-solid fa-pen-to-square"></i>อัพเดตสถาณะ
-                                                    </button>
 
-                                                </td>
-                                            </tr>
+                                <tr align="center">
+                                    <td width="10%"><?php echo $i ?></td>
+                                    <td width="20%"><?php echo $value['name']; ?></td>
+                                    <td width="10%"><?php echo $value['total']; ?></td>
+                                    <td width="10%"><?php echo $value['f_time']; ?></td>
+                                    <td width="10%"><?php echo $value['l_time']; ?></td>
+                                    <td width="10%"><?php echo $value['username']; ?></td>
+                                    <td width="20%">
+                                        <!-- Example split danger button -->
+                                        <?php if($value['status'] == "รออนุมัติการยืม" ){ ?>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-warning">รออนุมัติการยืม</button>
+                                                <button type="button"
+                                                    class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="visually-hidden"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">อนุมัติการยืม</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=ไม่อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">ไม่อนุมัติการยืม</a></li>
+                                                </ul>
+                                            </div>
+                                        <?php } elseif ($value['status'] == "อนุมัติการยืม"){ ?>
+                                            
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success">อนุมัติการยืม</button>
+                                                    <button type="button"
+                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=ไม่อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">ไม่อนุมัติการยืม</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            <?php } else { ?>
+                                                
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-danger">ไม่อนุมัติการยืม</button>
+                                                    <button type="button"
+                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status?status=อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">อนุมัติการยืม</a></li>
+                                                    </ul>
+                                                </div>
+                                                <?php } ?>
+                                    </td>
+                                </tr>
 
                                         <?php
-                                             
+                                            
                                                 $i++;
                                             }   
                                         ?>
-                                    </tbody>
-                                </table>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 </body>
@@ -121,11 +163,6 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#myTable').DataTable();
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#myTable1').DataTable();
 });
 </script>
 <!-- end script datatable -->
