@@ -149,7 +149,7 @@
                                             <th>รหัสครุภัณฑ์</th>
                                             <th>Serlal Number</th>
                                             <th>จำนวน</th>
-                                            <th>แก้ไข/ลบ</th>
+                                            <th>รูปภาพ/แก้ไข/ลบ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -166,9 +166,9 @@
                                             <td width="20%"><?php echo $value['serial']; ?></td>
                                             <td width="20%"><?php echo $value['total']; ?></td>
                                             <td width="10%">
-                                                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#<?php echo $value['id']; ?>">
+                                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
                                                     <i class="fa-solid fa-eye"></i>
-                                                </button> -->
+                                                </button>
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleEditShop<?php echo $value['id']; ?>">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </button>
@@ -331,7 +331,6 @@
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
                             <input name="pic" type="file" class="form-control" aria-label="file" aria-describedby="basic-addon1" required>
                         </div>
 
@@ -345,7 +344,38 @@
     </div>
 </form>
 <!-- end modal exampleAddShop -->
+<!-- modal exampleShowShop -->
+<?php
+                    $sql = "SELECT * FROM   shop";
+                    $array = mysqli_query($con,$sql);
+                    foreach($array as $value){
+                ?>
+<form method="POST"  enctype="multipart/form-data">
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel"><i
+                            class="fa-regular fa-pen-to-square"></i>&nbsp;รูปภาพ</h5>
 
+                </div>
+                <div class="modal-body">
+                    
+                        <div class="input-group mb-3">
+                            <img src="public/<?php echo $value['pic']; ?>" class="img-thumbnail" alt="<?php echo $value['name']; ?>">
+                                   
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                </div>                 
+            </div>
+        </div>
+    </div>
+</form>
+                <?php   }   ?>
+<!-- end modal exampleShowShop -->
 <!-- modal exampleEditShop -->
 <?php
                     $sql = "SELECT * FROM   shop";
