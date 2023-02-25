@@ -34,7 +34,7 @@
                                             <td width="20%"><?php echo $value['name']; ?></td>
                                             <td width="20%"><?php echo $value['total']; ?></td>
                                             <td width="20%">
-                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleShowShop<?php echo $value['id_shop']; ?>">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </button>
                                             </td>
@@ -74,7 +74,7 @@
                     foreach($array as $value){
                 ?>
 
-    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id_shop']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

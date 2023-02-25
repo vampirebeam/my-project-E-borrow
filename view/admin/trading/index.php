@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="../asset/css/box.css">
     <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include_once("../../asset/css/index.php");?>
-
 </head>
 
 <body>
@@ -109,7 +108,7 @@
                                     <td width="20%"><?php echo $value['total']; ?></td>
                                     <td width="10%">
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#exampleShowShop<?php echo $value['id']; ?>">
+                                            data-bs-target="#exampleShowShop<?php echo $value['id_shop']; ?>">
                                             <i class="fa-solid fa-eye"></i>
                                         </button>
                                     </td>
@@ -127,7 +126,7 @@
     </div>
 </body>
 <!-- modal exampleAdd -->
-<form method="POST" action="controller/addshop" enctype="multipart/form-data">
+<form  id="form_add" >
     <div class="modal fade" id="exampleAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -150,9 +149,12 @@
                             aria-label="l_time" aria-describedby="basic-addon1" min="<?php echo date('Y-m-d', strtotime('+1 day'));?>"
                             required>
                     </div>
+
+                                    <input type="hidden" name="p_total" id="p_total">
+
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fa-solid fa-cart-plus"></i></span>
-                        <select name="name" id="name" class="form-select" id="inputGroupSelect01"  required>
+                        <select name="name" id="name" class="form-select" onchange='changeStatus(event)' required>
                             <option selected disabled>โปรดเลือกอุปกรณ์ที่ต้องการยืม...</option>
                             <?php
                                         session_start();
@@ -160,27 +162,21 @@
                                         $array = mysqli_query($con,$sql);
                                         foreach($array as $value){
                                     ?>
-                            <option value="<?php echo $value['id_shop']; ?>.<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
+                            <option value="<?php echo $value['id_shop']; ?>"> <?php echo $value['name']; ?></option>
                                     <?php
                                         }
                                     ?>
                         </select>
-                    </div>
-                                        <?php 
-                                                $sql = "SELECT * FROM shop ";
-                                                $array = mysqli_query($con,$sql);
-                                                foreach($array as $value){
-                                        ?>
+                    </div>       
                      <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
-                            <input name="total" id="total" type="number" class="form-control" placeholder="จำนวนที่จะยืม"
-                            aria-label="total" aria-describedby="basic-addon1" min="1" max="<?php echo $value['total']; ?>"
+                            <input name="total" id="total" type="text" class="form-control" placeholder="จำนวนที่จะยืม"
+                            aria-label="total" aria-describedby="basic-addon1" onKeyUp="IsNumer(this.value,this)"
                             required>
-                                <?php
-                                        }
-                                    ?>
                             </input>
-                    </div> 
+                            
+                    </div>   
+
                     <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username']; ?>">
                     <input name="status" type="hidden" required class="form-control" id="status" value="รออนุมัติการยืม"
                         hidden />
@@ -188,7 +184,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal">ยืมอุปกรณ์</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="save()">ยืมอุปกรณ์</button>
                 </div>
             </div>
         </div>
@@ -202,7 +198,7 @@
                     foreach($array as $value){
                 ?>
 <form method="POST" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleShowShop<?php echo $value['id']; ?>" tabindex="-1"
+    <div class="modal fade" id="exampleShowShop<?php echo $value['id_shop']; ?>" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -228,24 +224,147 @@
 </form>
 <?php   }   ?>
 <!-- end modal exampleShowShop -->
-                            <!-- <input name="total" id="total" type="number" class="form-control" placeholder="จำนวนที่จะยืม"
-                            aria-label="total" aria-describedby="basic-addon1" min="1" max="<?php echo $total ?>"
-                            required> -->
+
+
 
 </html>
 <script src="../asset/js/sidebar.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
 <!-- script datatable -->
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable(); 
+        
 });
 </script>
+
+
 <!-- end script datatable -->
-<!-- script showCustomer -->
-<script type="text/javascript">
-    
+<script>
+     function changeStatus(event) {
+        let id = event.target.value;
+        
+        $.ajax({
+            url : "get_total.php",
+            method : "POST",
+            data : {
+            id : id 
+            
+        },
+        dataType: 'json',
+                cache: false,
+
+            success : function(response){
+
+                $("#p_total").val(response.total);
+                console.log(response.total);
+            }
+        });
+        
+     }
+
+
+     function save() {
+
+        var frm = $('#form_add');
+        let formData = new FormData(frm[0]);
+
+        var f_time = document.getElementById("f_time").value;
+        var l_time = document.getElementById("l_time").value;
+        var name = document.getElementById("name").value;
+        var p_total = Number(document.getElementById("p_total").value);
+        var total = Number(document.getElementById("total").value);
+
+
+
+        if(f_time == "" || l_time == "" || total == "" || name == "" ){
+
+            Swal.fire({
+                    text: "กรุณากรอกข้อมูลให้ถูกต้อง",
+                    icon: "warning",
+                    buttonsStyling: !1,
+                    confirmButtonText: "ตกลง",
+                    customClass: {
+                        confirmButton: "btn btn-warning"
+                    }
+                })
+
+                return
+        }
+
+
+        if(p_total < total){
+
+            Swal.fire({
+                    text: "กรุณากรอกจำนวนให้ถูกต้อง",
+                    icon: "warning",
+                    buttonsStyling: !1,
+                    confirmButtonText: "ตกลง",
+                    customClass: {
+                        confirmButton: "btn btn-warning"
+                    }
+                })
+
+        }else{
+
+            $.ajax({
+              url: "controller/addshop.php",
+              type: "POST",
+              data: formData,
+              cache: false,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+                Swal.fire({
+                    text: "ยืมอุปกรณ์สำเร็จ",
+                    icon: "success",
+                    buttonsStyling: !1,
+                    confirmButtonText: "ตกลง",
+                    customClass: {
+                        confirmButton: "btn btn-primary"
+                    }
+                }).then((function(e) {
+                    window.location.reload();
+                }))
+                
+              },
+              error: function (response) {
+                Swal.fire('เกิดข้อผิดพลาด!', 'บันทึกผิดพลาด.', 'error')
+              }
+            });
+
+        }
+        
+     }
+
+     function IsNumer(sText, obj) {
+            var ValidChars = "0123456789";
+            var IsNumber = true;
+            var Char;
+
+            for (i = 0; i < sText.length && IsNumber == true; i++) {
+                Char = sText.charAt(i);
+                if (ValidChars.indexOf(Char) == -1) {
+                    IsNumber = false;
+                }
+            }
+            if (IsNumber == false) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'แจ้งเตือน!!',
+                    text: 'กรุณาใส่ข้อมูลเป็นตัวเลข',
+                });
+
+                obj.value = 0;
+            }
+        }
+
+
 </script>
+<!-- script showCustomer -->
 <!-- end script total -->
 <?php include("../../asset/js/script.php") ?>

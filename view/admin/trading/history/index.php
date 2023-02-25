@@ -60,7 +60,7 @@
                     <?php } ?>
                 </div>
                 <div class="row">
-                        <!-- <div class="col-sm-4">
+                         <div class="col-sm-4">
                             <div class="card">
                                 <div
                                     class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
@@ -110,7 +110,7 @@
 
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         
                 <div class="card-body">
                     <div class="row mt-3">
@@ -128,8 +128,13 @@
                             </thead>
                             <tbody>
                                 <?php
-                                            $sql = "SELECT * FROM   history
-                                                    -- WHERE username ='$_SESSION[username]'
+                                            $sql = "SELECT  s.* , 
+                                                            his.id, his.username , his.total as histotal , his.f_time , his.l_time, his.status
+                                                    FROM   history  AS his
+                                                    INNER JOIN shop AS s 
+                                                    ON  his.id_shop  = s.id_shop
+                                                    -- WHERE his.username = '$_SESSION[username]'
+                                                    ORDER BY his.id  DESC
                                                     ";
                                             $array = mysqli_query($con,$sql);
                                             $i= 1;
@@ -139,7 +144,7 @@
                                 <tr align="center">
                                     <td width="10%"><?php echo $i ?></td>
                                     <td width="20%"><?php echo $value['name']; ?></td>
-                                    <td width="10%"><?php echo $value['total']; ?></td>
+                                    <td width="10%"><?php echo $value['histotal']; ?></td>
                                     <td width="10%"><?php echo $value['f_time']; ?></td>
                                     <td width="10%"><?php echo $value['l_time']; ?></td>
                                     <td width="10%"><?php echo $value['username']; ?></td>
@@ -195,7 +200,6 @@
                                 </tr>
 
                                         <?php
-                                            
                                                 $i++;
                                             }   
                                         ?>
