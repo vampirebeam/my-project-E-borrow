@@ -48,7 +48,12 @@
                     <div class="card text-dark bg-primary mb-3">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <i class="fa fa-home fa-5x"></i> รายการยืม 7 จำนวน
+                                    <?php   
+                                            $sql= "SELECT sum(status='อนุมัติการยืม') id FROM history";
+                                            $array = mysqli_query($con,$sql);
+                                            $sumhis = mysqli_fetch_assoc($array);       
+                                    ?>
+                                <i class="fa fa-home fa-5x"></i> รายการอนุมัติการยืม <?php echo $sumhis['id']; ?> จำนวน
                             </h5>
                         </div>
                     </div>

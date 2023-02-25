@@ -60,18 +60,17 @@
                     <?php } ?>
                 </div>
                 <div class="row">
-                         <div class="col-sm-4">
+                          <div class="col-sm-4">
                             <div class="card">
                                 <div
-                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
+                                    class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center">
                                     <?php   
-                                            $i= 1;
-                                            $sql= "SELECT SUM($i) as id FROM history";
+                                            $sql= "SELECT sum(status='รออนุมัติการยืม') id FROM history";
                                             $array = mysqli_query($con,$sql);
                                             $sum = mysqli_fetch_assoc($array);       
                                     ?>
-                                    <i class="fa-solid fa-wand-magic-sparkles fa-4x">
-                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่อนุมัติ <?php echo $sum['id']; ?> </h5>
+                                    <i class="fa-solid fa-clock-rotate-left fa-4x">
+                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่รออนุมัติการยืม <?php echo $sum['id']; ?> </h5>
                                     </i>
 
                                 </div>
@@ -80,15 +79,14 @@
                         <div class="col-sm-4">
                             <div class="card">
                                 <div
-                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
+                                    class="card-body list-group-item list-group-item-action list-group-item-success p-3 text-center">
                                     <?php   
-                                            $i= 1;
-                                            $sql= "SELECT SUM($i) as id FROM history";
+                                            $sql= "SELECT sum(status='อนุมัติการยืม') id FROM history";
                                             $array = mysqli_query($con,$sql);
                                             $sum = mysqli_fetch_assoc($array);       
                                     ?>
-                                    <i class="fa-solid fa-wand-magic-sparkles fa-4x">
-                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่รออนุมัติ <?php echo $sum['id']; ?> </h5>
+                                    <i class="fa-solid fa-clock-rotate-left fa-4x">
+                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่อนุมัติการยืม <?php echo $sum['id']; ?> </h5>
                                     </i>
 
                                 </div>
@@ -97,20 +95,19 @@
                         <div class="col-sm-4">
                             <div class="card">
                                 <div
-                                    class="card-body list-group-item list-group-item-action list-group-item-primary p-3 text-center">
+                                    class="card-body list-group-item list-group-item-action list-group-item-danger p-3 text-center">
                                     <?php   
-                                            $i= 1;
-                                            $sql= "SELECT SUM($i) SET status='อุปกรณ์ที่ไม่อนุมัติ' WHEN id  FROM history";
+                                            $sql= "SELECT sum(status='ไม่อนุมัติการยืม') id FROM history";
                                             $array = mysqli_query($con,$sql);
                                             $sum = mysqli_fetch_assoc($array);       
                                     ?>
-                                    <i class="fa-solid fa-wand-magic-sparkles fa-4x">
-                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่ไม่อนุมัติ <?php echo $sum['id']; ?> </h5>
+                                    <i class="fa-solid fa-clock-rotate-left fa-4x">
+                                        <h5 class="card-title mt-2">&nbsp;อุปกรณ์ที่ไม่อนุมัติการยืม <?php echo $sum['id']; ?> </h5>
                                     </i>
 
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         
                 <div class="card-body">
                     <div class="row mt-3">
