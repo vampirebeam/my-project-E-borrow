@@ -58,9 +58,9 @@
                         ?>
                     </div>
                     <?php } ?>
-                </div>
+                
                 <div class="row">
-                          <div class="col-sm-4">
+                           <div class="col-sm-4">
                             <div class="card">
                                 <div
                                     class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center">
@@ -107,8 +107,8 @@
 
                                 </div>
                             </div>
-                        </div> 
-                        
+                        </div>  
+                </div>        
                 <div class="card-body">
                     <div class="row mt-3">
                         <table id="myTable" class="table table-striped table-bordered" style="width:100%">
@@ -120,13 +120,14 @@
                                     <th>วันที่ยืม</th>
                                     <th>วันที่คืน</th>
                                     <th>ชื่อผู้ยืม</th>
-                                    <th>สถาณะ</th>
+                                    <th>สถาณะอนุมัติ</th>
+                                    <th>สถาณะอุปกรณ์</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                             $sql = "SELECT  s.* , 
-                                                            his.id, his.username , his.total as histotal , his.f_time , his.l_time, his.status
+                                                            his.id, his.username , his.total as histotal , his.f_time , his.l_time, his.status, his.status_shop
                                                     FROM   history  AS his
                                                     INNER JOIN shop AS s 
                                                     ON  his.id_shop  = s.id_shop
@@ -139,13 +140,14 @@
                                          ?>
 
                                 <tr align="center">
+                                    <input type="hidden" value="id_shop">
                                     <td width="10%"><?php echo $i ?></td>
                                     <td width="20%"><?php echo $value['name']; ?></td>
                                     <td width="10%"><?php echo $value['histotal']; ?></td>
                                     <td width="10%"><?php echo $value['f_time']; ?></td>
                                     <td width="10%"><?php echo $value['l_time']; ?></td>
                                     <td width="10%"><?php echo $value['username']; ?></td>
-                                    <td width="20%">
+                                    <td width="10%">
                                         <!-- Example split danger button -->
                                         <?php if($value['status'] == "รออนุมัติการยืม" ){ ?>
                                             <div class="btn-group">
@@ -193,6 +195,52 @@
                                                     </ul>
                                                 </div>
                                                 <?php } ?>
+                                    </td>
+                                    <td width="10%">
+                                        <?php if($value['status_shop'] == "รออนุมัติการยืม" ){ ?>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-warning">รออนุมัติการยืม</button>
+                                                    <button type="button"
+                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?>">กำลังใช้งาน</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>">คืนอุปกรณ์</a></li>
+                                                    </ul>
+                                                </div>
+                                        <?php } elseif ($value['status_shop'] == "กำลังใช้งาน"){ ?>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info">กำลังใช้งาน</button>
+                                                    <button type="button"
+                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>">คืนอุปกรณ์</a></li>
+                                                    </ul>
+                                                </div>
+
+                                        <?php } else { ?>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success">คืนอุปกรณ์</button>
+                                                    <button type="button"
+                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?>">กำลังใช้งาน</a></li>
+                                                    </ul>
+                                                </div>
+                                        <?php } ?>
                                     </td>
                                 </tr>
 

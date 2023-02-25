@@ -8,15 +8,14 @@
     $total = $_REQUEST["total"];
     $username = $_REQUEST["username"];
     $status = $_REQUEST["status"];
-
+    $status_shop = $_REQUEST["status_shop"];
 	$max = $_REQUEST["p_total"];
-
 	$sumtotal = $max - $total;
 	
 	//เพิ่มเข้าไปในฐานข้อมูล
     
-    $sql = "INSERT INTO history(name, f_time, l_time, total, username, status,id_shop)
-    VALUES('', '$f_time', '$l_time', '$total', '$username', '$status','$name')";      
+    $sql = "INSERT INTO history(name, f_time, l_time, total, username, status,id_shop,status_shop)
+    VALUES('', '$f_time', '$l_time', '$total', '$username', '$status','$name','$status_shop')";      
 
 	$result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
 	

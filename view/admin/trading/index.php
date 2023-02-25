@@ -180,6 +180,9 @@
                     <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['username']; ?>">
                     <input name="status" type="hidden" required class="form-control" id="status" value="รออนุมัติการยืม"
                         hidden />
+                    <input name="status_shop" type="hidden" required class="form-control" id="status_shop" value="รออนุมัติการยืม"
+                        hidden />
+                        
 
                 </div>
                 <div class="modal-footer">
