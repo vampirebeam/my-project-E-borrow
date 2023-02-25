@@ -23,7 +23,7 @@
 			SET status_shop='$status_shop'
 			WHERE id='$value'";      
 
-			// $result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
+			 $result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
 			// 	if($result){
 			
 			// 		$sql = "UPDATE shop SET total='$sumtotal' WHERE id_shop='$id_shop'";
