@@ -168,7 +168,7 @@
                                             
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success">อนุมัติการยืม</button>
-                                                    <button type="button"
+                                                    <!-- <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
                                                         <span class="visually-hidden"></span>
@@ -177,7 +177,7 @@
                                                         <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
                                                         <li><a class="dropdown-item" href="controller/update_status?status=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
                                                         <li><a class="dropdown-item" href="controller/update_status?status=ไม่อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">ไม่อนุมัติการยืม</a></li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
 
                                             <?php } else { ?>
@@ -230,16 +230,14 @@
                                         <?php } else { ?>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success">คืนอุปกรณ์</button>
-                                                    <button type="button"
+                                                    <!-- <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
                                                         <span class="visually-hidden"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>"><?php echo $value['status_shop'];?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?> ">รออนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?> ">กำลังใช้งาน</a></li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                         <?php } ?>
                                     </td>
