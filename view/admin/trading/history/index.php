@@ -126,7 +126,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                            $sql = "SELECT  s.* , 
+                                            $sql = "SELECT  s.*,s.total as shoptotal , 
                                                             his.id, his.username , his.total as histotal , his.f_time , his.l_time, his.status, his.status_shop
                                                     FROM   history  AS his
                                                     INNER JOIN shop AS s 
@@ -141,6 +141,7 @@
 
                                 <tr align="center">
                                     <input type="hidden" value="id_shop">
+                                    <input type="hidden" value="s.total">
                                     <td width="10%"><?php echo $i ?></td>
                                     <td width="20%"><?php echo $value['name']; ?></td>
                                     <td width="10%"><?php echo $value['histotal']; ?></td>
@@ -208,7 +209,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
                                                         <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?>">กำลังใช้งาน</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>">คืนอุปกรณ์</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>">คืนอุปกรณ์</a></li>
                                                     </ul>
                                                 </div>
                                         <?php } elseif ($value['status_shop'] == "กำลังใช้งาน"){ ?>
@@ -222,7 +223,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
                                                         <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>">คืนอุปกรณ์</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>">คืนอุปกรณ์</a></li>
                                                     </ul>
                                                 </div>
 
@@ -235,9 +236,9 @@
                                                         <span class="visually-hidden"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?>">กำลังใช้งาน</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>"><?php echo $value['status_shop'];?></a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?> ">รออนุมัติการยืม</a></li>
+                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?> ">กำลังใช้งาน</a></li>
                                                     </ul>
                                                 </div>
                                         <?php } ?>
