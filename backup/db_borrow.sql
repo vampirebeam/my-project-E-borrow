@@ -61,18 +61,15 @@ CREATE TABLE IF NOT EXISTS `history` (
   `id_shop` int(11) DEFAULT NULL COMMENT 'ID สินค้า',
   `status_shop` text COLLATE utf8_unicode_ci COMMENT 'สถาณะการใช้งาน',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการยืมอุปกรณ์';
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการยืมอุปกรณ์';
 
--- Dumping data for table borrow.history: 7 rows
+-- Dumping data for table borrow.history: 4 rows
 /*!40000 ALTER TABLE `history` DISABLE KEYS */;
 REPLACE INTO `history` (`id`, `name`, `username`, `total`, `f_time`, `l_time`, `status`, `id_shop`, `status_shop`) VALUES
-	(25, '', 'admin', 10, '2023-02-25', '2023-02-27', 'ไม่อนุมัติการยืม', 4, 'คืนอุปกรณ์'),
-	(26, '', 'admin', 15, '2023-02-25', '2023-02-26', 'รออนุมัติการยืม', 4, 'รออนุมัติการยืม'),
-	(23, '', 'admin', 11, '2023-02-25', '2023-02-26', 'อนุมัติการยืม', 4, 'กำลังใช้งาน'),
-	(28, '', 'admin', 10, '2023-02-25', '2023-02-27', 'รออนุมัติการยืม', 5, 'รออนุมัติการยืม'),
-	(29, '', 'admin', 10, '2023-02-25', '2023-02-27', 'ไม่อนุมัติการยืม', 4, 'คืนอุปกรณ์'),
-	(30, '', 'admin', 23, '2023-02-25', '2023-02-26', 'ไม่อนุมัติการยืม', 6, 'คืนอุปกรณ์'),
-	(31, '', 'admin', 10, '2023-02-25', '2023-02-26', 'รออนุมัติการยืม', 4, 'รออนุมัติการยืม');
+	(35, '', 'admin', 10, '2023-03-10', '2023-03-11', 'รออนุมัติการยืม', 5, 'กำลังใช้งาน'),
+	(33, '', 'admin', 10, '2023-03-10', '2023-03-11', 'ไม่อนุมัติการยืม', 4, 'คืนอุปกรณ์'),
+	(34, '', 'admin', 10, '2023-03-10', '2023-03-11', 'อนุมัติการยืม', 5, 'คืนอุปกรณ์'),
+	(32, '', 'admin', 10, '2023-03-10', '2023-03-11', 'อนุมัติการยืม', 4, 'คืนอุปกรณ์');
 /*!40000 ALTER TABLE `history` ENABLE KEYS */;
 
 -- Dumping structure for table borrow.shop
@@ -87,11 +84,11 @@ CREATE TABLE IF NOT EXISTS `shop` (
   KEY `cd` (`cd`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='อุปกรณ์';
 
--- Dumping data for table borrow.shop: 3 rows
+-- Dumping data for table borrow.shop: 2 rows
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
 REPLACE INTO `shop` (`id_shop`, `name`, `total`, `cd`, `serial`, `pic`) VALUES
-	(4, 'จอคอม300นิ้ว', 130, 'ทก.', 'ABCDEF', '4d7057a86d10c703dd18f077d3988f6d.png'),
-	(5, 'test', 301, 'test', 'ASD', '6c8a18d3cd6b6cb83378ef2f8e94815c.jpg');
+	(4, 'จอคอม300นิ้ว', 110, 'ทก.', 'ABCDEF', '4d7057a86d10c703dd18f077d3988f6d.png'),
+	(5, 'test', 90, 'test', 'ASD', '6c8a18d3cd6b6cb83378ef2f8e94815c.jpg');
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 
 -- Dumping structure for table borrow.users

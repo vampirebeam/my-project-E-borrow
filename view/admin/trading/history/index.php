@@ -152,7 +152,7 @@
                                         <!-- Example split danger button -->
                                         <?php if($value['status'] == "รออนุมัติการยืม" ){ ?>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-warning">รออนุมัติการยืม</button>
+                                                <button type="button" class="btn btn-warning" style="width:150px;">รออนุมัติการยืม</button>
                                                 <button type="button"
                                                     class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -167,7 +167,7 @@
                                         <?php } elseif ($value['status'] == "อนุมัติการยืม"){ ?>
                                             
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success">อนุมัติการยืม</button>
+                                                    <button type="button" class="btn btn-success" style="width:150px;">อนุมัติการยืม</button>
                                                     <!-- <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -183,8 +183,8 @@
                                             <?php } else { ?>
                                                 
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-danger">ไม่อนุมัติการยืม</button>
-                                                    <button type="button"
+                                                    <button type="button" class="btn btn-danger" style="width:150px;">ไม่อนุมัติการยืม</button>
+                                                    <!-- <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
                                                         <span class="visually-hidden"></span>
@@ -193,14 +193,14 @@
                                                         <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
                                                         <li><a class="dropdown-item" href="controller/update_status?status=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
                                                         <li><a class="dropdown-item" href="controller/update_status?status=อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">อนุมัติการยืม</a></li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                                 <?php } ?>
                                     </td>
                                     <td width="10%">
                                         <?php if($value['status_shop'] == "รออนุมัติการยืม" ){ ?>
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-warning">รออนุมัติการยืม</button>
+                                                    <button type="button" class="btn btn-warning" style="width:150px;">รออนุมัติการยืม</button>
                                                     <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -214,7 +214,7 @@
                                                 </div>
                                         <?php } elseif ($value['status_shop'] == "กำลังใช้งาน"){ ?>
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-info">กำลังใช้งาน</button>
+                                                    <button type="button" class="btn btn-info" style="width:150px;">กำลังใช้งาน</button>
                                                     <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -229,7 +229,7 @@
 
                                         <?php } else { ?>
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success">คืนอุปกรณ์</button>
+                                                    <button type="button" class="btn btn-success" style="width:150px;">คืนอุปกรณ์</button>
                                                     <!-- <button type="button"
                                                         class="btn btn-dark dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">

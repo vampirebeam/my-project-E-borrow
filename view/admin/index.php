@@ -62,7 +62,12 @@
                     <div class="card text-dark bg-danger mb-3 ">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <i class="fa fa-bell-slash fa-5x"></i> รายการค้างคืน 7 จำนวน
+                            <?php   
+                                            $sql= "SELECT sum(status='ไม่อนุมัติการยืม') id FROM history";
+                                            $array = mysqli_query($con,$sql);
+                                            $sumhis = mysqli_fetch_assoc($array);       
+                                    ?>
+                                <i class="fa fa-bell-slash fa-5x"></i> ไม่อนุมัติการยืม <?php echo $sumhis['id']; ?>  จำนวน
                             </h5>
                         </div>
                     </div>
