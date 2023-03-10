@@ -65,7 +65,8 @@
                                 <div
                                     class="card-body list-group-item list-group-item-action list-group-item-warning p-3 text-center">
                                     <?php   
-                                            $sql= "SELECT sum(status='รออนุมัติการยืม') id FROM history";
+                                            $sql= " SELECT sum(status='รออนุมัติการยืม') id FROM history
+                                                    WHERE username = '$_SESSION[username]'";
                                             $array = mysqli_query($con,$sql);
                                             $sum = mysqli_fetch_assoc($array);       
                                     ?>
@@ -81,7 +82,8 @@
                                 <div
                                     class="card-body list-group-item list-group-item-action list-group-item-success p-3 text-center">
                                     <?php   
-                                            $sql= "SELECT sum(status='อนุมัติการยืม') id FROM history";
+                                            $sql= " SELECT sum(status='อนุมัติการยืม') id FROM history
+                                                    WHERE username = '$_SESSION[username]'";
                                             $array = mysqli_query($con,$sql);
                                             $sum = mysqli_fetch_assoc($array);       
                                     ?>
@@ -97,7 +99,8 @@
                                 <div
                                     class="card-body list-group-item list-group-item-action list-group-item-danger p-3 text-center">
                                     <?php   
-                                            $sql= "SELECT sum(status='ไม่อนุมัติการยืม') id FROM history";
+                                            $sql= " SELECT sum(status='ไม่อนุมัติการยืม') id FROM history
+                                                    WHERE username = '$_SESSION[username]'";
                                             $array = mysqli_query($con,$sql);
                                             $sum = mysqli_fetch_assoc($array);       
                                     ?>
@@ -131,7 +134,7 @@
                                                     FROM   history  AS his
                                                     INNER JOIN shop AS s 
                                                     ON  his.id_shop  = s.id_shop
-                                                    -- WHERE his.username = '$_SESSION[username]'
+                                                    WHERE his.username = '$_SESSION[username]'
                                                     ORDER BY his.id  DESC
                                                     ";
                                             $array = mysqli_query($con,$sql);
@@ -153,47 +156,17 @@
                                         <?php if($value['status'] == "รออนุมัติการยืม" ){ ?>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-warning" style="width:150px;">รออนุมัติการยืม</button>
-                                                <button type="button"
-                                                    class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span class="visually-hidden"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">อนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=ไม่อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">ไม่อนุมัติการยืม</a></li>
-                                                </ul>
                                             </div>
                                         <?php } elseif ($value['status'] == "อนุมัติการยืม"){ ?>
                                             
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success" style="width:150px;">อนุมัติการยืม</button>
-                                                    <!-- <button type="button"
-                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <span class="visually-hidden"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=ไม่อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">ไม่อนุมัติการยืม</a></li>
-                                                    </ul> -->
                                                 </div>
 
                                             <?php } else { ?>
                                                 
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-danger" style="width:150px;">ไม่อนุมัติการยืม</button>
-                                                    <!-- <button type="button"
-                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <span class="visually-hidden"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=<?php echo $value['status']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status']; ?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status?status=อนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">อนุมัติการยืม</a></li>
-                                                    </ul> -->
                                                 </div>
                                                 <?php } ?>
                                     </td>
@@ -201,43 +174,15 @@
                                         <?php if($value['status_shop'] == "รออนุมัติการยืม" ){ ?>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-warning" style="width:150px;">รออนุมัติการยืม</button>
-                                                    <button type="button"
-                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <span class="visually-hidden"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=กำลังใช้งาน&&valuenum=<?php echo $value['id']; ?>">กำลังใช้งาน</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>">คืนอุปกรณ์</a></li>
-                                                    </ul>
                                                 </div>
                                         <?php } elseif ($value['status_shop'] == "กำลังใช้งาน"){ ?>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-info" style="width:150px;">กำลังใช้งาน</button>
-                                                    <button type="button"
-                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <span class="visually-hidden"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>valuenum=<?php echo $value['id']; ?>"><?php echo $value['status_shop']; ?></a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=รออนุมัติการยืม&&valuenum=<?php echo $value['id']; ?>">รออนุมัติการยืม</a></li>
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=คืนอุปกรณ์&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>">คืนอุปกรณ์</a></li>
-                                                    </ul>
                                                 </div>
 
                                         <?php } else { ?>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success" style="width:150px;">คืนอุปกรณ์</button>
-                                                    <!-- <button type="button"
-                                                        class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <span class="visually-hidden"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="controller/update_status_shop?status_shop=<?php echo $value['status_shop']; ?>&&valuenum=<?php echo $value['id']; ?>&&id_shop=<?php echo $value['id_shop']; ?>&&histotal=<?php echo $value['histotal']; ?>&&shoptotal=<?php echo $value['shoptotal']; ?>"><?php echo $value['status_shop'];?></a></li>
-                                                    </ul> -->
                                                 </div>
                                         <?php } ?>
                                     </td>

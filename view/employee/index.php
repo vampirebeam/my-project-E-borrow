@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบยืม-คืนอุปกรณ์</title>
     <link rel="stylesheet" href="asset/css/sidebars.css">
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include_once("../asset/css/index.php");?>
 
 </head>
@@ -40,7 +41,7 @@
             </div>
             <?php } ?>
 
-            <div class="card">
+            <div class="card mt-3">
             <div class="card-header bg-primary text-light">
                 <h5><i class="fa-sharp fa-solid fa-repeat fa-1x"></i>&nbsp;สถาณะอุปกรณ์ทั้งหมด</h5>
             </div>
@@ -104,8 +105,93 @@
                                 </div>
                             </div>
                         </div> 
+                        <div class="card-body">
+                    <div class="row mt-3">
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr class="btn-primary">
+                                    <th>ลำดับ</th>
+                                    <th>ชื่ออุปกรณ์</th>
+                                    <th>จำนวนที่ยืม</th>
+                                    <th>วันที่ยืม</th>
+                                    <th>วันที่คืน</th>
+                                    <th>ชื่อผู้ยืม</th>
+                                    <th>สถาณะอนุมัติ</th>
+                                    <th>สถาณะอุปกรณ์</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                            $sql = "SELECT  s.*,s.total as shoptotal , 
+                                                            his.id, his.username , his.total as histotal , his.f_time , his.l_time, his.status, his.status_shop
+                                                    FROM   history  AS his
+                                                    INNER JOIN shop AS s 
+                                                    ON  his.id_shop  = s.id_shop
+                                                    WHERE his.username = '$_SESSION[username]'
+                                                    ORDER BY his.id  DESC
+                                                    ";
+                                            $array = mysqli_query($con,$sql);
+                                            $i= 1;
+                                            foreach($array as $value){     
+                                         ?>
+
+                                <tr align="center">
+                                    <input type="hidden" value="id_shop">
+                                    <input type="hidden" value="s.total">
+                                    <td width="10%"><?php echo $i ?></td>
+                                    <td width="20%"><?php echo $value['name']; ?></td>
+                                    <td width="10%"><?php echo $value['histotal']; ?></td>
+                                    <td width="10%"><?php echo $value['f_time']; ?></td>
+                                    <td width="10%"><?php echo $value['l_time']; ?></td>
+                                    <td width="10%"><?php echo $value['username']; ?></td>
+                                    <td width="10%">
+                                        <!-- Example split danger button -->
+                                        <?php if($value['status'] == "รออนุมัติการยืม" ){ ?>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-warning" style="width:150px;">รออนุมัติการยืม</button>
+                                            </div>
+                                        <?php } elseif ($value['status'] == "อนุมัติการยืม"){ ?>
+                                            
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success" style="width:150px;">อนุมัติการยืม</button>
+                                                </div>
+
+                                            <?php } else { ?>
+                                                
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-danger" style="width:150px;">ไม่อนุมัติการยืม</button>
+                                                </div>
+                                                <?php } ?>
+                                    </td>
+                                    <td width="10%">
+                                        <?php if($value['status_shop'] == "รออนุมัติการยืม" ){ ?>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-warning" style="width:150px;">รออนุมัติการยืม</button>
+                                                </div>
+                                        <?php } elseif ($value['status_shop'] == "กำลังใช้งาน"){ ?>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info" style="width:150px;">กำลังใช้งาน</button>
+                                                </div>
+
+                                        <?php } else { ?>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success" style="width:150px;">คืนอุปกรณ์</button>
+                                                </div>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+
+                                        <?php
+                                                $i++;
+                                            }   
+                                        ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+        
 
             </div>
             
