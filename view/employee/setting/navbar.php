@@ -1,10 +1,10 @@
 <!-- Sidebar-->
 <div class="border-end bg-light" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-dark text-light">ระบบยืม-คืนอุปกรณ์</div>
+            <div class="sidebar-heading border-bottom bg-dark text-light">ระบบยืม-คืนอุปกรณ์</div>
                 <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index"><i class="fa fa-home fa-1x"></i>&nbsp;หน้าแรก</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="../index"><i class="fa fa-home fa-1x"></i>&nbsp;หน้าแรก</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="trading/index"><i class="fa-sharp fa-solid fa-repeat fa-1x"></i>&nbsp;ยืม - คืน</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="setting/index"><i class="fa-solid fa-gear fa-1x"></i>&nbsp;แก้ไขข้อมูลส่วนตัว</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index"><i class="fa-solid fa-gear fa-1x"></i>&nbsp;แก้ไขข้อมูลส่วนตัว</a>
                     <a class="list-group-item list-group-item-action list-group-item-danger p-3" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-from-bracket fa-1x"></i>&nbsp;ออกจากระบบ</a>
                 </div>
             </div>
@@ -42,4 +42,3 @@
                 </div>
                 </div>
                 <!-- end class main cintent modal -->
-                

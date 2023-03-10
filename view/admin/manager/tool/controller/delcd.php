@@ -4,7 +4,7 @@
         $id = $_REQUEST['valuenum'];
 
 $sql = "DELETE FROM cd 
-		WHERE id = '$id'";
+		WHERE id_shop = '$id'";
 		$result = mysqli_query($con,$sql);
         mysqli_close($con);
 

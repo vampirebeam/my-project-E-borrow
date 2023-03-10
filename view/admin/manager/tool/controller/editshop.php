@@ -20,7 +20,7 @@
 		
 	}
     session_start();
-	$value = $_GET['valuenum'];
+	$value = $_REQUEST['valuenum'];
     $name = $_POST["name"];
     $serial = $_POST["serial"];
     $cd = $_POST["cd"];
@@ -30,13 +30,10 @@
 
         $sql = "UPDATE shop 
         SET name='$name',serial='$serial',cd='$cd',total='$total',pic='$pic'
-        WHERE id='$value'";      
+        WHERE id_shop='$value'";      
 
-
-
-
-	$result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
+	$result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
 	//ปิดการเชื่อมต่อ database
 	mysqli_close($con);
 	//จาวาสคริปแสดงข้อความเมื่อบันทึกเสร็จและกระโดดกลับไปหน้าฟอร์ม
